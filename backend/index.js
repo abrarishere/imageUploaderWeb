@@ -8,6 +8,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const PORT = import.meta.env.PORT || 3000;
+
 fs.mkdirSync("tmp", { recursive: true });
 app.use(express.static("tmp"));
 
@@ -58,6 +60,6 @@ app.get("/:name", (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is running on port 3000");
 });
