@@ -25,6 +25,7 @@ const upload = multer({ storage: storage });
 
 app.post(
   "/upload",
+  cors(),
   upload.single("file"),
   function (req, res, next) {
     if (!req.file) {
