@@ -4,15 +4,7 @@ import cors from "cors";
 import fs from "fs";
 
 const app = express();
-// app.use(cors());
-// If you need to specify allowed origins, use this:
-const corsOptions = {
-  origin: "http://localhost:5173", // Allow only your frontend
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("tmp"));
