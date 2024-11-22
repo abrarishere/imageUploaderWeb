@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = import.meta.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;
 
 fs.mkdirSync("tmp", { recursive: true });
 app.use(express.static("tmp"));
