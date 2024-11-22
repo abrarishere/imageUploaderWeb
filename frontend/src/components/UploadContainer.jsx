@@ -1,4 +1,5 @@
 import exitIcon from "../assets/exit.svg";
+import Loader from "./Loader";
 
 const UploadContainer = ({ darkMode, setFile, loading, setLoading }) => {
   const handleCLick = () => {
@@ -24,7 +25,12 @@ const UploadContainer = ({ darkMode, setFile, loading, setLoading }) => {
       method: "POST",
       body: formData,
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
     setLoading(false);
@@ -45,9 +51,7 @@ const UploadContainer = ({ darkMode, setFile, loading, setLoading }) => {
   return (
     <div className="w-full h-full flex justify-center items-center py-36">
       {loading ? (
-        <div className="absolute z-10 bg-[#000000AA] w-full h-full flex justify-center items-center">
-          <div className="w-10 h-10 border-4 border-t-[#3662E3] rounded-full animate-spin"></div>
-        </div>
+        <Loader darkMode={darkMode} />
       ) : (
         <div
           className={`rounded-lg flex justify-center items-center shadow-md ${darkMode ? "bg-[#1F2937] shadow[#E5E7EB22]" : "shadow-[#12182622] bg-white"} sm:w-[600px] sm:h-[400px] lg:w-[650px] lg:h-[370px] 2xl:w-[1000px] 2xl:h-[600px] w-[80%] h-[300px] xl:w-[800px] xl:h-[500px] p-2`}

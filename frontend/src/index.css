@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.short-line {
+  animation: short-line 1s infinite;
+}
+
+@keyframes short-line {
+  /* the short line moves from left to rigt inside a big line */
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(400%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

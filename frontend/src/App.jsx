@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import UploadContainer from "./components/UploadContainer";
 import ShowFile from "./components/ShowFile";
+import Loader from "./components/Loader";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -13,7 +14,12 @@ const App = () => {
     >
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       {file ? (
-        <ShowFile darkMode={darkMode} file={file} />
+        <ShowFile
+          darkMode={darkMode}
+          file={file}
+          loading={loading}
+          setLoading={setLoading}
+        />
       ) : (
         <UploadContainer
           darkMode={darkMode}
